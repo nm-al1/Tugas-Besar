@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Student Information Web App</title>
+</head>
+<body>
+
+    <header>
+        <h1>Student Information Web</h1>
+        <nav>
+            <ul>
+                <li><a href="#dashboard">Dashboard</a></li>
+                <li><a href="#input-data">Input & Hitung Nilai</a></li>
+                <li><a href="#daftar-mahasiswa">Daftar Mahasiswa</a></li>
+                <li><a href="#profil">Profil Mahasiswa</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="dashboard">
+            <h2>Dashboard</h2>
+            <div class="stats-container">
+                <article class="stat-card">
+                    <h3>Total Mahasiswa</h3>
+                    <p id="total-mahasiswa">0</p>
+                </article>
+                <article class="stat-card">
+                    <h3>Mahasiswa Lulus</h3>
+                    <p id="total-lulus">0</p>
+                </article>
+                <article class="stat-card">
+                    <h3>Mahasiswa Tidak Lulus</h3>
+                    <p id="total-gagal">0</p>
+                </article>
+                <article class="stat-card">
+                    <h3>Rata-rata Nilai Kelas</h3>
+                    <p id="rata-rata-kelas">0.00</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="input-data">
+            <h2>Input Data & Hitung Nilai</h2>
+            <form id="form-mahasiswa">
+                <fieldset>
+                    <legend>Data Akademik</legend>
+
+                    <div>
+                        <label for="nim">NIM:</label>
+                        <input type="text" id="nim" name="nim" required placeholder="Contoh: 42220001">
+                    </div>
+
+                    <div>
+                        <label for="nama">Nama Lengkap:</label>
+                        <input type="text" id="nama" name="nama" required placeholder="Nama lengkap mahasiswa">
+                    </div>
+
+                    <div>
+                        <label for="prodi">Program Studi:</label>
+                        <select id="prodi" name="prodi" required>
+                            <option value="" disabled selected>Pilih Program Studi</option>
+                            <option value="Teknik Komputer dan Jaringan">Teknik Komputer dan Jaringan</option>
+                            <option value="Teknik Informatika">Teknik Informatika</option>
+                            <option value="Sistem Informasi">Sistem Informasi</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="nilai-tugas">Nilai Tugas (0-100):</label>
+                        <input type="number" id="nilai-tugas" name="nilaiTugas" min="0" max="100" step="0.01" required>
+                    </div>
+
+                    <div>
+                        <label for="nilai-uts">Nilai UTS (0-100):</label>
+                        <input type="number" id="nilai-uts" name="nilaiUts" min="0" max="100" step="0.01" required>
+                    </div>
+
+                    <div>
+                        <label for="nilai-uas">Nilai UAS (0-100):</label>
+                        <input type="number" id="nilai-uas" name="nilaiUas" min="0" max="100" step="0.01" required>
+                    </div>
+
+                    <button type="submit" id="btn-submit">SIMPAN / HITUNG</button>
+                    <button type="reset">RESET FORM</button>
+                </fieldset>
+            </form>
+
+            <div id="hasil-kalkulasi" aria-live="polite">
+                <h3>Hasil Penilaian Terakhir</h3>
+                <dl>
+                    <dt>NIM:</dt>
+                    <dd id="out-nim">-</dd>
+
+                    <dt>Nama:</dt>
+                    <dd id="out-nama">-</dd>
+
+                    <dt>Nilai Akhir:</dt>
+                    <dd id="out-nilai-akhir">-</dd>
+
+                    <dt>Grade:</dt>
+                    <dd id="out-grade">-</dd>
+
+                    <dt>Status:</dt>
+                    <dd id="out-status">-</dd>
+                </dl>
+            </div>
+        </section>
+
+        <section id="daftar-mahasiswa">
+            <h2>Daftar Mahasiswa</h2>
+            <table border="1" id="tabel-mahasiswa">
+                <thead>
+                    <tr>
+                        <th>NIM</th>
+                        <th>Nama</th>
+                        <th>Program Studi</th>
+                        <th>Tugas</th>
+                        <th>UTS</th>
+                        <th>UAS</th>
+                        <th>Nilai Akhir</th>
+                        <th>Grade</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="tabel-body">
+                    <tr>
+                        <td colspan="9" style="text-align: center;">Belum ada data mahasiswa.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="profil">
+            <h2>Detail Profil Mahasiswa</h2>
+            <div id="profil-card">
+                <p>Pilih salah satu mahasiswa dari daftar untuk melihat detail lengkap profil dan transkrip ringkas.</p>
+                <div id="profil-konten" style="display: none;">
+                    <h3 id="profil-nama">-</h3>
+                    <p><strong>NIM:</strong> <span id="profil-nim">-</span></p>
+                    <p><strong>Program Studi:</strong> <span id="profil-prodi">-</span></p>
+                    <p><strong>Predikat Kelulusan:</strong> <span id="profil-status">-</span></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p><small>&copy; 2026 Student Information System</small></p>
+    </footer>
+
+    <script src="/js/script.js"></script>
+
+</body>
+</html>
